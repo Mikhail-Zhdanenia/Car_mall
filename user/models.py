@@ -56,8 +56,8 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     # Other
     objects = UserManager()
 
-    EMAIL_FIELD = "email"
-    USERNAME_FIELD = "username"
+    # USERNAME_FIELD = "username"
+    USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["email", "role"]
 
     class Meta:
@@ -75,8 +75,6 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         """Send an email to this user."""
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
-    def tokens(self):
-        refresh = RefreshToken.for_user(self)
-        return {'refresh': str(refresh), 'access': str(refresh.access_token)}
+    
 
 

@@ -9,6 +9,6 @@
 
 .coverage
 celerybeat-schedule
-
+.idea
 **/.lock
 **/.log
