@@ -25,6 +25,10 @@ djangorestframework = "~=3.13.1"
 Pillow = "~=8.1.2"
 PyYAML = "~=5.3.1"
 Django = "~=4.0.3"
+psycopg2-binary = "*"
+django-countries = "*"
+django-money = "*"
+djangorestframework-simplejwt = "*"
 
 [dev-packages]
 
