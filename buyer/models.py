@@ -11,7 +11,7 @@ def get_preferred_car_characters():
 
 class Buyer(CommonAbstractModel):
     '''Buyers.'''
-    user = models.OneToOneField('user.UserProfile', on_delete=models.CASCADE, related_name='buyer_profile')
+    #user = models.OneToOneField('user.UserProfile', on_delete=models.CASCADE, related_name='buyer_profile')
     first_name = models.CharField(max_length=255, verbose_name='First name')
     last_name = models.CharField(max_length=255, verbose_name='Last name')
     balance = MoneyField(max_digits=10, decimal_places=2, default_currency='USD')
