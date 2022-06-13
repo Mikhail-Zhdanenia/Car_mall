@@ -6,7 +6,7 @@ from core.models import CommonAbstractModel, Promotion
 
 class Supplier(CommonAbstractModel):
     '''Car suppliers.'''
-    user = models.OneToOneField('user.UserProfile', on_delete=models.CASCADE, related_name='supplier_profile')
+    #user = models.OneToOneField('user.UserProfile', on_delete=models.CASCADE, related_name='supplier_profile')
     name = models.CharField(max_length=255, verbose_name='Supplier name')
     year_of_foundation = models.DateField(verbose_name='Year of foundation')
     car_count = models.PositiveIntegerField(default=0, verbose_name='Count of sold cars')

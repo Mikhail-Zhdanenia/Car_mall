@@ -29,6 +29,11 @@ psycopg2-binary = "*"
 django-countries = "*"
 django-money = "*"
 djangorestframework-simplejwt = "*"
+drf-yasg = "*"
+django-rest-swagger = "*"
+django-filter = "*"
+filters-django = "*"
+django-debug-toolbar = "*"
 
 [dev-packages]
 

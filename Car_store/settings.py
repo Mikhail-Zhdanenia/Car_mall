@@ -40,13 +40,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'core.apps.CoreConfig',
+    'buyer.apps.BuyerConfig',
+    'car.apps.CarConfig',
+    'dealership.apps.DealershipConfig',
+    'supplier.apps.SupplierConfig',
+
+
     'rest_framework',
-    'buyer',
-    'car',
-    'core',
-    'dealership',
-    'supplier',
-    'user',
+    'djmoney',
+    'django_countries',
+    'drf_yasg',
+    'rest_framework_swagger',
+    'django_filters',
+    'debug_toolbar',
 
 ]
 
@@ -58,6 +65,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
+
+
+INTERNAL_IPS = [
+    '127.0.0.1',
 ]
 
 ROOT_URLCONF = 'Car_store.urls'
@@ -80,6 +93,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Car_store.wsgi.application'
+
+REST_FRAMEWORK = {
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"]
+}
 
 
 # Database
@@ -136,4 +153,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = "user.UserProfile"
+#AUTH_USER_MODEL = "user.UserProfile"
