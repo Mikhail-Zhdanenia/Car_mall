@@ -2,7 +2,7 @@ import django_filters
 from django_filters import rest_framework as filters
 from django_filters.widgets import BooleanWidget
 
-#from user.models import UserProfile
+from user.models import UserProfile
 from buyer.models import Buyer, BuyerOffer
 from dealership.models import Dealership
 from supplier.models import Supplier
@@ -12,7 +12,7 @@ class CharFieldInFilter(filters.BaseInFilter, filters.CharFilter):
     pass
 
 
-'''class UserProfileFilter(filters.FilterSet):
+class UserProfileFilter(filters.FilterSet):
     username = CharFieldInFilter(lookup_expr='iexact')
     email = CharFieldInFilter(lookup_expr='iexact')
     verifyed_email = django_filters.BooleanFilter(widget=BooleanWidget())
@@ -21,7 +21,7 @@ class CharFieldInFilter(filters.BaseInFilter, filters.CharFilter):
 
     class Meta:
         model = UserProfile
-        fields = ('username', 'email', 'verifyed_email', 'role', 'is_superuser')'''
+        fields = ('username', 'email', 'verifyed_email', 'role', 'is_superuser')
 
 
 class BuyerFilter(filters.FilterSet):
@@ -63,3 +63,5 @@ class SupplierFilter(filters.FilterSet):
     class Meta:
         model = Supplier
         fields = ('name', 'year_of_foundation')
+
+

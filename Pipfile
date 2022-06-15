@@ -34,6 +34,9 @@ django-rest-swagger = "*"
 django-filter = "*"
 filters-django = "*"
 django-debug-toolbar = "*"
+drf-jwt = "*"
+django-rest-auth = "*"
+djoser = "*"
 
 [dev-packages]
 
