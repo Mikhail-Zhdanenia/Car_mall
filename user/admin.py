@@ -10,7 +10,7 @@ class UserProfileAdmin(UserAdmin):
     add_form = UserProfileCreationForm
     form = UserProfileChangeForm
     model = UserProfile
-    list_display = ['username', 'email', 'verifyed_email', 'role']
+    list_display = ('username', 'email', 'verifyed_email', 'role')
 
     fieldsets = (
         (_('User info'), {'fields': ('username', 'email', 'verifyed_email', 'password', 'role')}),
