@@ -1,8 +1,8 @@
 from django.contrib import admin
-from django.urls import include, path, re_path
+from django.urls import include, path
 from django.conf import settings
 from rest_framework import routers
-
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
 
 #from user.views import UserProfileViewSet
 from buyer.views import BuyerViewSet, BuyerHistoryViewSet, BuyerOfferViewSet
@@ -58,9 +58,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls'), name='homepage-url'),
 
-    # APIs
+    path('api/auth/', include('djoser.urls')),
+    path('api/auth/', include('djoser.urls.jwt')),
+    path('api/auth/', include('djoser.urls.authtoken')),
     path('api/', include(router.urls)),
-    #path('auth/', include('user.urls')),
+    #path('auth/', include('user.urls')),`
 
     path('swagger(?P<format>\.json|\.yaml)', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
