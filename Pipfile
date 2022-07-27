@@ -37,6 +37,11 @@ django-debug-toolbar = "*"
 drf-jwt = "*"
 django-rest-auth = "*"
 djoser = "*"
+celery = "*"
+flwr = "*"
+flower = "*"
+redis = "*"
+faker = "*"
 
 [dev-packages]
 

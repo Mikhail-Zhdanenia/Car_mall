@@ -1,16 +1,18 @@
 version: '3.8'
 
 services:
-
+  #data base configuration__________
   db:
     image: postgres:14
 
     volumes:
-      - ./data/db:/var/lib/postgresql/data
+      - pg_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     env_file:
       - .env.dev
+
+  #web application configuration__________
 
   web:
 
@@ -19,7 +21,7 @@ services:
       dockerfile: Dockerfile
     command: sh ./entrypoint.sh
     volumes:
-      - .:/CarStore
+      - .:/car_market
     ports:
       - "8000:8000"
     env_file:
@@ -27,3 +29,49 @@ services:
     depends_on:
       - db
 
+# Redis broker messages configuration_______________
+
+  redis:
+    image: redis:alpine
+    ports:
+      - '127.0.0.1:6379:6379'
+    depends_on:
+      - db
+
+# Worker celery configuration_____________
+  worker:
+    build: .
+    command: celery -A Car_store worker
+    volumes:
+      - .:/car_market
+    depends_on:
+      - web
+
+  # Celery beat configuration
+  beat:
+    build: .
+    command: celery -A Car_store beat -l info
+    env_file:
+      - .env.dev
+    volumes:
+      - .:/car_market
+    depends_on:
+      - worker
+
+  # Flower configuration
+  flower:
+    build: .
+    command: celery -A Car_store flower
+    volumes:
+      - .:/car_market
+    # working_dir: /data
+    ports:
+      - 5555:5555
+    env_file:
+      - .env.dev
+    depends_on:
+      - beat
+
+volumes:
+  pg_data:
+    driver: local

@@ -11,7 +11,7 @@ def get_car_characters():
 
 class Dealership(CommonAbstractModel):
     '''Dealership.'''
-    #user = models.OneToOneField('user.UserProfile', on_delete=models.CASCADE, related_name='dealership_profile')
+    user = models.OneToOneField('user.UserProfile', on_delete=models.CASCADE, related_name='dealership_profile')
     name = models.CharField(max_length=255, verbose_name='Dealership name')
     location = CountryField(verbose_name='Dealership location')
     balance = MoneyField(max_digits=10, decimal_places=2, default_currency='USD', verbose_name='Balance')
