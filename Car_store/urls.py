@@ -54,7 +54,7 @@ for addr in addresses:
     router.register(addr[0], addr[1], basename=addr[2])
 
 urlpatterns = [
-    # No APIs
+
     path('admin/', admin.site.urls),
     path('', include('core.urls'), name='homepage-url'),
 
@@ -62,7 +62,7 @@ urlpatterns = [
     path('api/auth/', include('djoser.urls.jwt')),
     path('api/auth/', include('djoser.urls.authtoken')),
     path('api/', include(router.urls)),
-    #path('auth/', include('user.urls')),`
+    #path('auth/', include('user.urls')),
 
     path('swagger(?P<format>\.json|\.yaml)', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
